@@ -1,0 +1,124 @@
+// COPYRIGHTS.© ABANOB AYOUB
+//Simple database implimentation for tables (classes) of sales, inventory, and finance subsystems.
+//These queries typed by DBMS "MySQL Workbench"
+
+create database carDealership;
+use carDealership;
+
+drop table Person;
+Create Table Person(
+mPersonID INT (20),
+mFirstName VARCHAR (45),
+mLastName VARCHAR (45),
+mGender varchar(45),
+mDateBirth varchar(45),
+mPhone INT (15), 
+mEmail varchar(60),
+mAddress varchar(60),
+Primary Key (mPersonID));
+select * from Person;
+
+drop table Customer;
+Create Table Customer(
+mPersonID INT (45),
+mDriverLic  VARCHAR (20),
+FOREIGN KEY(mPersonID) REFERENCES person (mPersonID),
+Primary Key (mPersonID));
+select * from Customer;
+
+drop table SalesRep;
+Create Table SalesRep(
+mPersonID INT (45),
+mSSN  INT (20),
+FOREIGN KEY(mPersonID) REFERENCES person (mPersonID),
+Primary Key (mPersonID));
+select * from SalesRep;
+
+drop table Manager;
+Create Table Manager(
+mPersonID INT (45),
+mSSN  INT (20),
+FOREIGN KEY(mPersonID) REFERENCES person (mPersonID),
+Primary Key (mPersonID));
+select * from Manager;
+
+drop table Account;
+Create Table Account (
+mAccountID INT (45),
+mPersonID INT (45),
+mPurchaseID INT (45),
+mOpenDate VARCHAR (45),
+mCloseDate VARCHAR (45),
+mStatus VARCHAR (20),
+FOREIGN KEY(mPersonID) REFERENCES person (mPersonID),
+Primary Key (mAccountID));
+select * from account;
+
+drop table Purchase;
+Create Table Purchase (
+mPurchaseID INT (45),
+mVinNum INT (45),
+mAccountID INT (45),
+mPurchaseDate VARCHAR (45),
+mTax INT (10),
+mRegisterationFee INT (10),
+FOREIGN KEY(mVinNum) REFERENCES Car (mVinNum),
+FOREIGN KEY(mAccountID) REFERENCES Account (mAccountID),
+Primary Key (mPurchaseID));
+select * from Purchase;
+
+drop table Car;
+Create Table Car (
+mVinNum INT (45),
+mManufacturer VARCHAR (45),
+mModel VARCHAR (45),
+mYear INT (10),
+mTrim VARCHAR (10),
+mColor VARCHAR (10),
+Primary Key (mVinNum));
+select * from Car;
+
+drop table FullPurchase;
+Create Table FullPurchase (
+mPurchaseID INT (45),
+mTotalPaid INT (45),
+FOREIGN KEY(mPurchaseID) REFERENCES Purchase (mPurchaseID),
+Primary Key (mPurchaseID));
+select * from FullPurchase;
+
+drop table Finance;
+Create Table Finance (
+mPurchaseID INT (45),
+mInterestRate INT (5),
+mDownPayment INT (10),
+mTerm INT (5),
+FOREIGN KEY(mPurchaseID) REFERENCES Purchase (mPurchaseID),
+Primary Key (mPurchaseID));
+select * from Finance;
+
+drop table CreditCard;
+Create Table CreditCard (
+mCreditCardNo INT (45),
+mPersonID INT (45),
+mNameOnCard varchar (80),
+mExpDate VARCHAR (20),
+mCVV INT (20),
+FOREIGN KEY(mPersonID) REFERENCES person (mPersonID),
+Primary Key (mCreditCardNo));
+select * from CreditCard;
+
+drop table Payment;
+Create Table Payment (
+mPaymentID INT (20),
+mPurchaseID INT (20),
+mCreditCardNo INT (45),
+mPaymentDate varchar (45),
+mPaidAmount INT (10),
+mPaymentMethod INT (45),
+FOREIGN KEY(mPurchaseID) REFERENCES Purchase (mPurchaseID),
+FOREIGN KEY(mCreditCardNo) REFERENCES CreditCard (mCreditCardNo),
+Primary Key (mPaymentID));
+select * from Payment;
+
+// COPYRIGHTS.© ABANOB AYOUB
+// COPYRIGHTS.© ABANOB AYOUB
