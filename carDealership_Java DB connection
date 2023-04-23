@@ -42,7 +42,7 @@ public class JDBC_C {
 		}
         	System.out.println(personData);
 		}
-		con.close();  //Step 5: Close connection.
+		con.close();  		//Step 5: Close connection.
 	      } 
 	      catch(Exception e) {  
 		e.printStackTrace();
