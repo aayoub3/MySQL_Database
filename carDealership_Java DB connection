@@ -9,6 +9,7 @@
 	4- Execute Queries.
 	5- Close connection.
 ************************************/
+// COPYRIGHTS.© ABANOB AYOUB
 
 package JDBC;
 import java.sql.*;
