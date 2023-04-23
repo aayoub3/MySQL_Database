@@ -1,6 +1,14 @@
 // COPYRIGHTS.© ABANOB AYOUB
 // Description: This Java code connected to the DB to display the Data of the table "Person".
 // NOTE: Makesure you have the MySQL .jar connector file installed before run this code.
+// Steps to connect database in java:
+/************************************
+	1- Register the driver class.
+	2- Create Connection.
+	3- Create Statement.
+	4- Execute Queries.
+	5- Close connection.
+************************************/
 
 package JDBC;
 import java.sql.*;
@@ -10,22 +18,22 @@ public class JDBC_C {
 	public static void main(String args[]){  
 		
 	      //Connection Info
-	      String url = "jdbc:mysql://localhost:3306/carDealership";
-	      String uname = "root";
-	      String password = "12529207Pipo";
-	      String query = "Select * from Person";
+	      String url = "jdbc:mysql://localhost:3306/carDealership";  //Replace "carDealership" with your DB name
+	      String uname = "root";			//By default the user_name is "root", but if it's different replace it by your uName
+	      String password = "YOUR_PASSWORD";  	//Replace "YOUR_PASSWORD" with your own password (if any)
+	      String query = "Select * from Person";	//You may change the query action to get what evet you want from DB
 		
 		
 	      try {
-	          Class.forName("com.mysql.cj.jdbc.Driver");  //Find the Driver class by right click on the database and choose "Properties"
+	          Class.forName("com.mysql.cj.jdbc.Driver");  //Step 1: Register the driver class. (If you use NetBeans IDE) Find the Driver class by right click on the database and choose "Properties"
 	      } catch (ClassNotFoundException e){
 	      //TODO Auto generated catch block
 	      e.printStackTrace();
 	      }
 try {
-		Connection con=DriverManager.getConnection(url,uname,password);   //Setup the connection: the conncetion 'con' will go to the driver
-		Statement stmt=con.createStatement();   //initialize the statement
-		ResultSet result=stmt.executeQuery(query);   //generate a result from the statement so it's linked to the statement which is linked to the connection 'con'. Thus all connected to each other  
+		Connection con=DriverManager.getConnection(url,uname,password);   //Step 2: Create the connection. The conncetion 'con' will go to the driver
+		Statement stmt=con.createStatement();   			//Step 3: Create the statement.
+		ResultSet result=stmt.executeQuery(query);   		//Step 4: Execute Queries. Generate a result from the statement so it's linked to the statement which is linked to the connection 'con'. Thus all connected to each other  
 		
 		System.out.println("\nID	FName	LName  Gender	DateOfBirth	Phone#	  Email			Address "
 				+ "\n---------------------------------------------------------------------------------------------------");
@@ -37,7 +45,7 @@ try {
 		}
         System.out.println(personData);
 		}
-		con.close();  
+		con.close();  //Step 5: Close connection.
 }
 	catch(Exception e) {  
 		e.printStackTrace();
