@@ -1,0 +1,50 @@
+// COPYRIGHTS.© ABANOB AYOUB
+// Description: This Java code connected to the DB to display the Data of the table "Person".
+// NOTE: Makesure you have the MySQL .jar connector file installed before run this code.
+
+package JDBC;
+import java.sql.*;
+
+public class JDBC_C {
+
+	public static void main(String args[]){  
+		
+	      //Connection Info
+	      String url = "jdbc:mysql://localhost:3306/carDealership";
+	      String uname = "root";
+	      String password = "12529207Pipo";
+	      String query = "Select * from Person";
+		
+		
+	      try {
+	          Class.forName("com.mysql.cj.jdbc.Driver");  //Find the Driver class by right click on the database and choose "Properties"
+	      } catch (ClassNotFoundException e){
+	      //TODO Auto generated catch block
+	      e.printStackTrace();
+	      }
+try {
+		Connection con=DriverManager.getConnection(url,uname,password);   //Setup the connection: the conncetion 'con' will go to the driver
+		Statement stmt=con.createStatement();   //initialize the statement
+		ResultSet result=stmt.executeQuery(query);   //generate a result from the statement so it's linked to the statement which is linked to the connection 'con'. Thus all connected to each other  
+		
+		System.out.println("\nID	FName	LName  Gender	DateOfBirth	Phone#	  Email			Address "
+				+ "\n---------------------------------------------------------------------------------------------------");
+		
+		while(result.next()) {   //result.next generates a boolean (T/F or NIL)
+		String personData ="";
+		for(int i=1; i <= 8; i++) { //NOTE: i<8 because we will display the 8 columns of the table "Person"
+			personData+= result.getString(i)+"	";
+		}
+        System.out.println(personData);
+		}
+		con.close();  
+}
+	catch(Exception e) {  
+		e.printStackTrace();
+		}  
+  }  
+}//END
+	
+// COPYRIGHTS.© ABANOB AYOUB
+// COPYRIGHTS.© ABANOB AYOUB
+
