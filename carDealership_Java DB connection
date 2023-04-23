@@ -1,6 +1,6 @@
 // COPYRIGHTS.© ABANOB AYOUB
 // Description: This Java code connected to the DB to display the Data of the table "Person".
-// NOTE: Makesure you have the MySQL .jar connector file added properly to your project before run this code.
+// NOTE: Make sure you have the MySQL .jar connector file added properly to your project before run this code.
 // If you use NetBeans IDE put the .jar connector file in the Libraries folder (Thus, you may need to create "Java with ANT project" NOT "Jave with Maven") 
 // Steps to connect database in java:
 /************************************
@@ -28,7 +28,7 @@ public class JDBC_C {
 		
 	      try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");  			  //Step 1: Register the driver class. (If you use NetBeans IDE) Find the Driver class by right click on the database and choose "Properties"
-	        Connection con=DriverManager.getConnection(url,uname,password);   //Step 2: Create the connection. The conncetion 'con' will go to the driver
+	        Connection con=DriverManager.getConnection(url,uname,password);   //Step 2: Create the connection. The connection 'con' will go to the driver
 		Statement stmt=con.createStatement();   			  //Step 3: Create the statement.
 		ResultSet result=stmt.executeQuery(query);   			  //Step 4: Execute Queries. Generate a result from the statement so it's linked to the statement which is linked to the connection 'con'. Thus all connected to each other  
 		
