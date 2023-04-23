@@ -40,7 +40,7 @@ public class JDBC_C {
 		for(int i=1; i <= 8; i++) { //NOTE: i<8 because we will display the 8 columns of the table "Person"
 			personData+= result.getString(i)+"	";
 		}
-        System.out.println(personData);
+        	System.out.println(personData);
 		}
 		con.close();  //Step 5: Close connection.
 	      } 
