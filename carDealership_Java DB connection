@@ -1,7 +1,7 @@
 // COPYRIGHTS.© ABANOB AYOUB
 // Description: This Java code connected to the DB to display the Data of the table "Person".
 // NOTE: Make sure you have the MySQL .jar connector file added properly to your project before run this code.
-// If you use NetBeans IDE put the .jar connector file in the Libraries folder (Thus, you may need to create "Java with ANT project" NOT "Jave with Maven") 
+// If you use NetBeans IDE put the .jar connector file in the Libraries folder (Thus, you may need to create "Java with ANT project" NOT "Jave with Maven project") 
 // Steps to connect database in java:
 /************************************
 	1- Register the driver class.
